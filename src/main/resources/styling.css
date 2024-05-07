@@ -1,0 +1,38 @@
+#kontostand {
+    -fx-font-family: "Geneva";
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+}
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #8a2be2, #9370db);
+}
+
+HBox {
+    -fx-padding: 10px;
+    -fx-spacing: 28px;
+}
+
+Button {
+    -fx-background-color: #633886;
+    -fx-border-color: #1f1f1f;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-font-family: "Geneva";
+    -fx-cursor: hand;
+}
+
+Button:hover {
+    -fx-background-color: #8a58b7;
+}
+
+#mehrgeld {
+    -fx-font-family: "Geneva";
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+}

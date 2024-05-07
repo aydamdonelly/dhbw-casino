@@ -4,15 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
-
 import java.io.IOException;
-
 
 public class CasinoController {
 
     @FXML
     private StackPane contentArea;
-
     @FXML
     public void loadBlackjackView() throws IOException {
         Node view = loadFXML("blackjack-view.fxml");
@@ -34,6 +31,18 @@ public class CasinoController {
     public void loadMuenzeView() throws IOException {
         Node view = loadFXML("muenze-view.fxml");
         contentArea.getChildren().setAll(view);
+    }
+    public void loadSettings() throws IOException {
+        Node view = loadFXML("settings-view.fxml");
+        contentArea.getChildren().setAll(view);
+    }
+
+    public void submitName() throws IOException {
+        System.out.println("test");
+    }
+
+    public void increaseKontostand() throws IOException {
+        System.out.println("test");
     }
 
     private Node loadFXML(String fxml) throws IOException {

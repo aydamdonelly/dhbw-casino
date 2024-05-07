@@ -1,11 +1,18 @@
 package com.example.casino.model;
 
 public class casinoPlayer {
-    private static String name = "Martin";
-    private static int kontostand = 0;
-    public casinoPlayer(String name, int kontostand) {
-        this.kontostand = kontostand;
-        this.name = name;
+    private String name = "Martin";
+    private int kontostand = 1000; //startkapital
+
+    private static casinoPlayer player = null;
+    private casinoPlayer() {
+    }
+
+    public static casinoPlayer getPlayer(String name, int kontostand) {
+        if(player == null) {
+            player = new casinoPlayer();
+        }
+        return player;
     }
 
     public int getKontostand() {

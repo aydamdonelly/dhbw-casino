@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.StackPane?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.casino.CasinoController">
-  <!-- Top Spacing -->
+  <!-- Top-Bereich mit Buttons -->
   <top>
-    <VBox prefHeight="50.0" BorderPane.alignment="CENTER"/>
-    <HBox spacing="20" alignment="CENTER">
-      <Button text="Blackjack" minWidth="100" onAction="#loadBlackjackView"/>
-      <Button text="Roulette" minWidth="100" onAction="#loadRouletteView"/>
-      <Button text="Slots" minWidth="100" onAction="#loadSlotsView"/>
-      <Button text="Münze" minWidth="100" onAction="#loadMuenzeView"/>
-    </HBox>
+    <BorderPane>
+      <!-- Einstellungsbutton oben links -->
+      <left>
+        <HBox alignment="CENTER">
+          <Button text="Einstellungen" minWidth="100" onAction="#loadSettings"/>
+        </HBox>
+      </left>
+
+      <!-- Spielbuttons zentriert in der Mitte -->
+      <right>
+        <HBox alignment="CENTER">
+          <Button text="BLACKJACK" minWidth="100" onAction="#loadBlackjackView" />
+          <Button text="ROULETTE" minWidth="100" onAction="#loadRouletteView" />
+          <Button text="SLOTS" minWidth="100" onAction="#loadSlotsView" />
+          <Button text="MÜNZE" minWidth="100" onAction="#loadMuenzeView" />
+        </HBox>
+      </right>
+    </BorderPane>
   </top>
 
-  <!-- Button Container -->
+  <!-- Zentraler Bereich für die Spielansichten -->
   <center>
     <StackPane fx:id="contentArea">
-      <!-- dynamisch generiert -->
+      <!-- Inhalte werden dynamisch geladen -->
     </StackPane>
   </center>
 
-  <!-- Kontostand am unteren Rand des View-Bereichs -->
+  <!-- Unten: Anzeige des Kontostands -->
   <bottom>
-    <Label text="Kontostand: €0.00" style="-fx-font-size: 20;" BorderPane.alignment="CENTER"/>
+    <HBox alignment="CENTER">
+      <Label fx:id="kontostand" text="Kontostand: €0.00" style="-fx-font-size: 20;"/>
+      <Region HBox.hgrow="ALWAYS" />
+    </HBox>
   </bottom>
 </BorderPane>
