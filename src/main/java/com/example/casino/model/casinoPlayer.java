@@ -8,7 +8,7 @@ public class casinoPlayer {
     private casinoPlayer() {
     }
 
-    public static casinoPlayer getPlayer(String name, int kontostand) {
+    public static casinoPlayer getPlayer() {
         if(player == null) {
             player = new casinoPlayer();
         }

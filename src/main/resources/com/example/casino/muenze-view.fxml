@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.example.casino.CasinoController"
-           prefHeight="400.0" prefWidth="600.0">
-    <Label text="MUENZENSPIEL" style="-fx-font-size: 20;" BorderPane.alignment="CENTER"/>
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.MuenzeController">
+    <BorderPane minHeight="400" minWidth="500" prefHeight="800" prefWidth="1000">
+        <center>
+            <ImageView fx:id="coinimg" fitHeight="300" fitWidth="300" preserveRatio="true" />
+        </center>
+        <bottom>
+            <BorderPane>
+                <top>
+                    <HBox alignment="CENTER" spacing="10"> <!-- Adjusted spacing here -->
+                        <Button fx:id="headsbutton" styleClass="betbuttoncoin" onAction="#headsBet" text="KOPF" />
+                        <Button fx:id="tailsbutton" styleClass="betbuttoncoin" onAction="#tailsBet" text="ZAHL" />
+                    </HBox>
+                </top>
+                <center>
+                    <HBox alignment="CENTER" style="-fx-padding: 10px 0 0 0"> <!-- Removed negative spacing and adjusted padding -->
+                        <Button fx:id="cointoss" onAction="#tossCoin" text="MÜNZE WERFEN" />
+                    </HBox>
+                </center>
+            </BorderPane>
+        </bottom>
+    </BorderPane>
 </StackPane>

@@ -1,6 +1,7 @@
 package com.example.casino;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,9 @@ public class CasinoController {
 
     @FXML
     private StackPane contentArea;
+
+    @FXML
+    private Label kontostand;
     @FXML
     public void loadBlackjackView() throws IOException {
         Node view = loadFXML("blackjack-view.fxml");

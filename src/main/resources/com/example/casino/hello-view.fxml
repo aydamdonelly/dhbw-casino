@@ -28,7 +28,7 @@
 
   <!-- Zentraler Bereich für die Spielansichten -->
   <center>
-    <StackPane fx:id="contentArea">
+    <StackPane fx:id="contentArea" prefHeight="800" prefWidth="1000" minWidth="500" minHeight="400">
       <!-- Inhalte werden dynamisch geladen -->
     </StackPane>
   </center>
@@ -36,7 +36,7 @@
   <!-- Unten: Anzeige des Kontostands -->
   <bottom>
     <HBox alignment="CENTER">
-      <Label fx:id="kontostand" text="Kontostand: €0.00" style="-fx-font-size: 20;"/>
+      <Label fx:id="kontostand" text="Kontostand: €1000.00" style="-fx-font-size: 20;"/>
       <Region HBox.hgrow="ALWAYS" />
     </HBox>
   </bottom>
