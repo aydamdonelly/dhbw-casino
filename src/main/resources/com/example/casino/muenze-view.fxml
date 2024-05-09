@@ -13,6 +13,7 @@
                 <top>
                     <HBox alignment="CENTER" spacing="10"> <!-- Adjusted spacing here -->
                         <Button fx:id="headsbutton" styleClass="betbuttoncoin" onAction="#headsBet" text="KOPF" />
+                        <TextField fx:id="betAmount" promptText="Einsatz eingeben" prefWidth="500"/>
                         <Button fx:id="tailsbutton" styleClass="betbuttoncoin" onAction="#tailsBet" text="ZAHL" />
                     </HBox>
                 </top>

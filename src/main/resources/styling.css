@@ -36,3 +36,8 @@ Button:hover {
     -fx-font-weight: bold;
     -fx-font-size: 30px;
 }
+
+#betAmount {
+    -fx-font-family: "Pixelify Sans";
+    -fx-font-size: 20px;
+}

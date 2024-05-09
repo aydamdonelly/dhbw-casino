@@ -1,53 +1,64 @@
 package com.example.casino;
 
-import com.example.casino.model.GameResultListener;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import com.example.casino.model.muenzLogik;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 
-import java.io.IOException;
+import java.util.HashMap;
 
-public class MuenzeController implements GameResultListener {
+public class MuenzeController implements Controller {
 
-    private static muenzLogik logik = new muenzLogik();
+    //Anbindung Controller->Model
+    private muenzLogik logik = new muenzLogik(this);
 
+    //Images u. Animationen
     @FXML
     private ImageView coinimg;
+
+    //Spielbuttons und andere Elemente aus View
     @FXML
     private Button headsbutton;
     @FXML
     private Button tailsbutton;
+    @FXML
+    private TextField betAmount;
 
+    //Nicht verfügbare Buttons
+    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
+
+    //MVC Implementation
     @FXML
     public void tossCoin() {
         logik.toss();
     }
-    public MuenzeController() {
-        logik.setGameResultListener(this);
-    }
     @FXML
     public void headsBet() {
-        muenzLogik.setBet("Heads");
-        headsbutton.setStyle("-fx-background-color: #864425");
-        tailsbutton.setStyle("-fx-background-color: grey");
+        try {
+            muenzLogik.setBet("Heads", convertInput(betAmount.getText()));
+            headsbutton.setStyle("-fx-background-color: #864425");
+            tailsbutton.setStyle("-fx-background-color: grey");
+        } catch(NumberFormatException e) {
+            betAmount.setText("");
+            betAmount.setPromptText("Gültige Zahl eingeben!");
+        }
+
     }
     @FXML
     public void tailsBet() {
-        muenzLogik.setBet("Tails");
-        tailsbutton.setStyle("-fx-background-color: #864425");
-        headsbutton.setStyle("-fx-background-color: grey");
+        try {
+            muenzLogik.setBet("Tails", convertInput(betAmount.getText()));
+            headsbutton.setStyle("-fx-background-color: grey");
+            tailsbutton.setStyle("-fx-background-color: #864425");
+        } catch(NumberFormatException e) {
+            betAmount.setText("");
+            betAmount.setPromptText("Gültige Zahl eingeben!");
+        }
     }
 
-    public void reset() {
-        tailsbutton.setStyle("-fx-background-color: #864425");
-        headsbutton.setStyle("-fx-background-color: #864425");
-    }
-
+    //restliche Spiellogik
     public void displaySide(String side) {
         if(side.equals("Heads")) {
             coinimg.setImage(new Image("kopf.png"));
@@ -56,13 +67,45 @@ public class MuenzeController implements GameResultListener {
         }
     }
 
-    private Node loadFXML(String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        return loader.load();
-    }
-
+    //Controller-Methoden
+    @Override
     public void onGameEnd(String result) {
         displaySide(result);
-        reset();
+        tailsbutton.setStyle("-fx-background-color: #864425");
+        headsbutton.setStyle("-fx-background-color: #864425");
+        betAmount.setText("");
+        betAmount.setPromptText("Einsatz");
+    }
+
+    public void onGameEnd() {
+        tailsbutton.setStyle("-fx-background-color: #864425");
+        headsbutton.setStyle("-fx-background-color: #864425");
+        betAmount.setText("");
+        betAmount.setPromptText("Einsatz");
+    }
+
+    @Override
+    public void setBlocked(Button button) {
+        button.setStyle("-fx-background-color: #a93b3b;");
+        blockedButtons.put(button, true);
+    }
+
+    @Override
+    public void unblockButton(Button button) {
+        button.setStyle("-fx-background-color: #864425;");
+        blockedButtons.remove(button);
+    }
+
+    @Override
+    public float convertInput(String inputtext) throws NumberFormatException{
+        inputtext = inputtext.replace(",",".");
+        return Float.parseFloat(inputtext);
+    }
+
+    @Override
+    public void betRejected(Exception e) {
+        betAmount.setText("");
+        onGameEnd();
+        betAmount.setPromptText(e.getMessage());
     }
 }
