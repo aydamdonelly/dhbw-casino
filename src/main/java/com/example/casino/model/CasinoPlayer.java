@@ -40,7 +40,7 @@ public class CasinoPlayer {
     //Spiellogik
     public boolean checkBet(float angefragterEinsatz) throws InsufficientFundsException {
         if(angefragterEinsatz > kontostand) {
-            throw new InsufficientFundsException(kontostand-angefragterEinsatz);
+            throw new InsufficientFundsException(angefragterEinsatz-kontostand);
         }
         return true;
     }

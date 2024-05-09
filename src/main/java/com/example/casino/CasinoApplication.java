@@ -12,7 +12,7 @@ public class CasinoApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CasinoApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 1200);
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 1200);
         String css = this.getClass().getResource("/styling.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setTitle("99% hören vor dem Win auf! Bitte weiterspielen!");

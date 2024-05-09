@@ -21,6 +21,9 @@
           <Button text="ROULETTE" minWidth="100" onAction="#loadRouletteView" />
           <Button text="SLOTS" minWidth="100" onAction="#loadSlotsView" />
           <Button text="MÜNZE" minWidth="100" onAction="#loadMuenzeView" />
+          <Button text="CRASH" minWidth="100" onAction="#loadCrashView" />
+          <Button text="GLÜCKSRAD" minWidth="100" onAction="#loadGlücksradView" />
+          <Button text="PLINKO" minWidth="100" onAction="#loadPlinkoView" />
         </HBox>
       </right>
     </BorderPane>
