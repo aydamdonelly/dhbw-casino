@@ -2,7 +2,7 @@
 
 Also ich hab das so gemacht, dass ihr so wenig wie möglich die Infrastruktur vom gesamten Spiel coden müsst. Ihr müsst nur die Spiellogik implementieren und visualisieren, wenn ihr alles so macht wie hier beschrieben.
 
-Rüdiger wollte von uns, dass wir das Model-View-Controller Pattern implementieren und uns danach richten. Ist bei JavaFX easy, weils da Controller gibt und so, ich denk aber ihr habt aufgepasst deswegen erkläre ich nicht was Controller machen.
+Rüdiger wollte von uns, dass wir das Model-View-Controller Pattern implementieren und uns danach richten. Ist bei JavaFX easy.
 
 Model ist die Spiellogik, View ist die Ansicht. Controller handled Eingaben und kommuniziert mit Model und mit View. Der Controller sagt der View, was anzuzeigen ist und dem Model, welche Eingaben getätigt wurden (wie viel der Spieler eingesetzt hat z.B.)
 
