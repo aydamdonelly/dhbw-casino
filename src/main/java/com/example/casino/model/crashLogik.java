@@ -157,7 +157,7 @@ public class crashLogik {
 
     private void explodeRocket(ImageView player_img) throws FileNotFoundException{
         // getting the image of the explosion
-        FileInputStream explosionInputStream = new FileInputStream("/Users/bastianlipka/Desktop/dhbw-casino-main/src/main/resources/img/explosion.png");
+        FileInputStream explosionInputStream = new FileInputStream("src/main/resources/img/explosion.png");
         Image explosionImg = new Image(explosionInputStream);
         ImageView explosion_view = new ImageView(explosionImg);
 
