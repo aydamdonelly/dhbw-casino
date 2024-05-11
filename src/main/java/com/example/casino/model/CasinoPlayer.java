@@ -2,6 +2,7 @@ package com.example.casino.model;
 
 import com.example.casino.CasinoController;
 import com.example.casino.Controller;
+import javafx.application.Platform;
 
 public class CasinoPlayer {
 
@@ -10,7 +11,7 @@ public class CasinoPlayer {
     private float kontostand = 1000; //startkapital
 
     //Anbindung Model->Controller
-    private CasinoController controller;
+    public CasinoController controller;
 
     //Singleton
     private static CasinoPlayer player = null;
@@ -40,7 +41,7 @@ public class CasinoPlayer {
     //Spiellogik
     public boolean checkBet(float angefragterEinsatz) throws InsufficientFundsException {
         if(angefragterEinsatz > kontostand) {
-            throw new InsufficientFundsException(angefragterEinsatz-kontostand);
+            throw new InsufficientFundsException(kontostand-angefragterEinsatz);
         }
         return true;
     }
@@ -53,5 +54,10 @@ public class CasinoPlayer {
     public void setKontostand(float newkontostand) {
         kontostand = newkontostand;
         controller.updateKonto(newkontostand);
+    }
+
+    public void setKontostandThread(float newkontostand) {
+        kontostand = newkontostand;
+        controller.updateKontoThread(newkontostand);
     }
 }

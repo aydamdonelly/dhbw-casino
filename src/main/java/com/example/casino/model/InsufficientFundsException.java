@@ -5,6 +5,6 @@ public class InsufficientFundsException extends Exception {
         super();
     }
     public InsufficientFundsException(float fehlbetrag) {
-        super("Für diese Wette brauchst du noch "+fehlbetrag+"0€! Zahl mehr Geld ein und spiele immer weiter!");
+        super("Für diese Wette brauchst du noch"+fehlbetrag+"0€! Zahl mehr Geld ein und spiele immer weiter!");
     }
 }
