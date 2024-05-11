@@ -217,7 +217,7 @@ public class crashLogik {
 
     private void runGame() throws RuntimeException, FileNotFoundException {
         // getting the rocket img
-        FileInputStream imginputstream = new FileInputStream("/Users/bastianlipka/Desktop/dhbw-casino-main/src/main/resources/img/rocket.png");
+        FileInputStream imginputstream = new FileInputStream("src/main/resources/img/rocket.png");
         Image img = new Image(imginputstream);
         ImageView player_img = new ImageView(img);
 
