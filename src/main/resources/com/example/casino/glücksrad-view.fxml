@@ -8,7 +8,8 @@
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.GluecksradController">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.GluecksradController">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <Circle id="rad" fill="#092f15" radius="127.0" stroke="BLACK" strokeType="INSIDE" />
@@ -35,3 +36,4 @@
       <Label text="Hol Dir JETZT deinen Täglichen FREE SPIN!" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>
+</StackPane>
