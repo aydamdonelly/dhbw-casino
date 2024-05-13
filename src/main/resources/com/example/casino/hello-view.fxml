@@ -21,11 +21,11 @@
       <!-- Spielbuttons zentriert in der Mitte -->
       <right>
         <HBox alignment="CENTER">
-          <Button minWidth="100" onAction="#loadBlackjackView" text="BLACKJACK" />
-          <Button minWidth="100" onAction="#loadRouletteView" text="ROULETTE" />
-          <Button minWidth="100" onAction="#loadSlotsView" text="SLOTS" />
-          <Button minWidth="100" onAction="#loadMuenzeView" text="MÜNZE" />
-          <Button minWidth="100" onAction="#loadCrashView" text="CRASH" />
+          <Button fx:id="blackjack_button" minWidth="100" onAction="#loadBlackjackView" text="BLACKJACK" />
+          <Button fx:id="roulette_button" minWidth="100" onAction="#loadRouletteView" text="ROULETTE" />
+          <Button fx:id="slots_button" minWidth="100" onAction="#loadSlotsView" text="SLOTS" />
+          <Button fx:id="muenze_button" minWidth="100" onAction="#loadMuenzeView" text="MÜNZE" />
+          <Button fx:id="crash_button" minWidth="100" onAction="#loadCrashView" text="CRASH" />
         </HBox>
       </right>
     </BorderPane>

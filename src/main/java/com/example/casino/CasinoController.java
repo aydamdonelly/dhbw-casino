@@ -31,6 +31,24 @@ public class CasinoController implements Controller {
     @FXML
     public Label kontostand;
 
+    // buttons for blocking
+    @FXML
+    public Button blackjack_button;
+
+    @FXML
+    public Button roulette_button;
+
+    @FXML
+    public Button slots_button;
+
+    @FXML
+    public Button muenze_button;
+
+    @FXML
+    public Button crash_button;
+
+
+
     //Anbindung Controller->Model
     private static CasinoPlayer player;
 

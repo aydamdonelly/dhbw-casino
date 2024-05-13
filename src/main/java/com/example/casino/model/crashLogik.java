@@ -23,7 +23,7 @@ public class crashLogik {
 
     private static CasinoPlayer player = CasinoPlayer.getPlayer();
 
-    public crashLogik(CrashController controller) {
+    public crashLogik(CrashController controller) throws FileNotFoundException {
         this.controller = (CrashController) controller;
     }
 
@@ -40,6 +40,10 @@ public class crashLogik {
 
     public MergeSortDec sorting = new MergeSortDec();
 
+    private FileInputStream imginputstream = new FileInputStream("src/main/resources/img/rocket.png");
+    private Image img = new Image(imginputstream);
+    private ImageView player_img = new ImageView(img);
+
     private void clearPane(){
         controller.crsh_pane.getChildren().clear();
     }
@@ -50,7 +54,7 @@ public class crashLogik {
 
     private void save_score(){
         try{
-            Path scoreFile = Paths.get("crash_score.txt");
+            Path scoreFile = Paths.get("src/main/resources/saves/crash_score.txt");
             Files.write(scoreFile, new byte[0]);
             if (!Files.exists(scoreFile))
                 Files.createFile(scoreFile);
@@ -92,7 +96,6 @@ public class crashLogik {
 
     public void displayHighScore(){
         scores = sorting.mergeSort(scores);
-        System.out.println(scores);
         String text = "Highscore: " + scores.get(0) + "x";
         controller.crsh_highscore.setText(text);
     }
@@ -180,12 +183,12 @@ public class crashLogik {
         // letting the rocket crash at random
         // if the multiplier is higher than 2.5 the rocket crashes also
         Random random = new Random();
-        int bound = 50; // random chance 50 = 1:50 it crashes
+        int bound = 100; // random chance 50 = 1:50 it crashes
         int randomNumber = random.nextInt(bound);
         return ((randomNumber == 1) || (currentMultiplier > 2.5f));
     }
 
-    private void doCrashing(ImageView player_img) throws FileNotFoundException {
+    private void doCrashing() throws FileNotFoundException {
         currentMultiplier = 0;
         String shown_text = currentMultiplier + "x";
         Platform.runLater(() -> controller.crsh_factor_text.setText(shown_text));
@@ -194,7 +197,7 @@ public class crashLogik {
         explodeRocket(player_img);
     }
 
-    private void placeInitRocket(ImageView player_img){
+    public void placeInitRocket(){
         // setting an placing the img
         player_img.setFitHeight(120);
         player_img.setFitWidth(120);
@@ -205,7 +208,7 @@ public class crashLogik {
         Platform.runLater(() -> controller.crsh_pane.getChildren().add(player_img));
     }
 
-    private void tickGame(ImageView player_img){
+    private void tickGame(){
         // moving multiplier and moving the rocket
         setNewMultiplier();
         String shown_text = currentMultiplier + "x";
@@ -216,25 +219,21 @@ public class crashLogik {
     }
 
     private void runGame() throws RuntimeException, FileNotFoundException {
-        // getting the rocket img
-        FileInputStream imginputstream = new FileInputStream("src/main/resources/img/rocket.png");
-        Image img = new Image(imginputstream);
-        ImageView player_img = new ImageView(img);
 
         // placing the rocket on init
-        placeInitRocket(player_img);
+        placeInitRocket();
 
         try {
             while (true) {
                 // do random rocket crashing
                 // guard clause
                 if  (checkForCrash()){
-                    doCrashing(player_img);
+                    doCrashing();
                     // ending the thread for a new game round
                     throw new InterruptedException();
                 }
                 // new multiplier and moves the rocket up
-                tickGame(player_img);
+                tickGame();
 
                 // setting the time between each tick
                 Thread.sleep(100);

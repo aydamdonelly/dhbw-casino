@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -35,10 +36,17 @@ public class CrashController implements Controller{
     @FXML
     public Label crsh_highscore;
 
+    //Nicht verfügbare Buttons
+    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
+
     //Anbindung Controller->Model
     private crashLogik logik = new crashLogik(this);
 
     private static CasinoPlayer player = CasinoPlayer.getPlayer();
+
+    public CrashController() throws FileNotFoundException {
+        // file not found exception because of the init of a picture in the logic constructor
+    }
 
 
     public void initialize(){
@@ -47,6 +55,7 @@ public class CrashController implements Controller{
         Float score = logik.load_score();
         System.out.println(score);
         displayHighScore(score);
+        logik.placeInitRocket();
     }
 
     public void displayHighScore(Float scores){
@@ -68,15 +77,21 @@ public class CrashController implements Controller{
 
             if (logik.gameRunning){
                 crsh_toggle_start_button.setText("Start Rocket!");
-                System.out.println("hello ending");
+                System.out.println("crash: round ended");
                 logik.endGame();
                 logik.gameRunning = false;
+
+
+
             }else{
                 logik.gameRunning = true;
-                System.out.println("hello starting");
+                System.out.println("crash: round started");
                 crsh_toggle_start_button.setText("Stop Rocket!");
                 logik.startGame();
+
+                player.controller.blackjack_button.setDisable(true);
             }
+
         } catch (InsufficientFundsException e){
             logik.currentBet = 0f;
             System.out.println("The player does not have enought money!");
@@ -88,6 +103,24 @@ public class CrashController implements Controller{
 
     // some stuff to implement
 
+    public void unblockButtons(){
+        // blocking the buttons
+        unblockButton(player.controller.blackjack_button);
+        unblockButton(player.controller.roulette_button);
+        unblockButton(player.controller.slots_button);
+        unblockButton(player.controller.muenze_button);
+        unblockButton(player.controller.crash_button);
+    }
+
+    public void blockButtons(){
+        // blocking the buttons
+        setBlocked(player.controller.blackjack_button);
+        setBlocked(player.controller.roulette_button);
+        setBlocked(player.controller.slots_button);
+        setBlocked(player.controller.muenze_button);
+        setBlocked(player.controller.crash_button);
+    }
+
     @Override
     public void onGameEnd(String result) {
 
@@ -95,12 +128,14 @@ public class CrashController implements Controller{
 
     @Override
     public void setBlocked(Button button) {
-
+        button.setStyle("-fx-background-color: #a93b3b;");
+        blockedButtons.put(button, true);
     }
 
     @Override
     public void unblockButton(Button button) {
-
+        button.setStyle("-fx-background-color: #864425;");
+        blockedButtons.remove(button);
     }
 
     @Override
