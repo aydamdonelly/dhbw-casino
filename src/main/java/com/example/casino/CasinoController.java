@@ -85,6 +85,19 @@ public class CasinoController implements Controller {
         rootStandardStyle();
         contentArea.getChildren().setAll(view);
     }
+
+    @FXML
+    public void loadPlinkoView() throws IOException {
+        Node view = loadFXML("plinko-view.fxml");
+        contentArea.getChildren().setAll(view);
+    }
+
+    @FXML
+    public void loadGlücksradView() throws IOException {
+        Node view = loadFXML("glücksrad-view.fxml");
+        contentArea.getChildren().setAll(view);
+    }
+
     @FXML
     public void loadMuenzeView() throws IOException {
         Node view = loadFXML("muenze-view.fxml");

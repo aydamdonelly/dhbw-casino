@@ -185,7 +185,7 @@ public class crashLogik {
         Random random = new Random();
         int bound = 100; // random chance 50 = 1:50 it crashes
         int randomNumber = random.nextInt(bound);
-        return ((randomNumber == 1) || (currentMultiplier > 2.5f));
+        return ((randomNumber == 1) || (currentMultiplier > 2.50f));
     }
 
     private void doCrashing() throws FileNotFoundException {
@@ -195,6 +195,7 @@ public class crashLogik {
         Platform.runLater(() -> controller.crsh_toggle_start_button.setText("Start Rocket!"));
         player.setKontostandThread(calcResult(currentBet, currentMultiplier));
         explodeRocket(player_img);
+        controller.unblockElements();
     }
 
     public void placeInitRocket(){

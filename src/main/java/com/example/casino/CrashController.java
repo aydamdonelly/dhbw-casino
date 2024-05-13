@@ -3,21 +3,14 @@ package com.example.casino;
 import com.example.casino.model.CasinoPlayer;
 import com.example.casino.model.InsufficientFundsException;
 import com.example.casino.model.crashLogik;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 public class CrashController implements Controller{
 
@@ -80,16 +73,14 @@ public class CrashController implements Controller{
                 System.out.println("crash: round ended");
                 logik.endGame();
                 logik.gameRunning = false;
-
-
+                unblockElements();
 
             }else{
                 logik.gameRunning = true;
                 System.out.println("crash: round started");
                 crsh_toggle_start_button.setText("Stop Rocket!");
                 logik.startGame();
-
-                player.controller.blackjack_button.setDisable(true);
+                blockElements();
             }
 
         } catch (InsufficientFundsException e){
@@ -103,22 +94,24 @@ public class CrashController implements Controller{
 
     // some stuff to implement
 
-    public void unblockButtons(){
+    public void unblockElements(){
         // blocking the buttons
         unblockButton(player.controller.blackjack_button);
         unblockButton(player.controller.roulette_button);
         unblockButton(player.controller.slots_button);
         unblockButton(player.controller.muenze_button);
         unblockButton(player.controller.crash_button);
+        crshBetAmount.setDisable(false);
     }
 
-    public void blockButtons(){
+    public void blockElements(){
         // blocking the buttons
         setBlocked(player.controller.blackjack_button);
         setBlocked(player.controller.roulette_button);
         setBlocked(player.controller.slots_button);
         setBlocked(player.controller.muenze_button);
         setBlocked(player.controller.crash_button);
+        crshBetAmount.setDisable(true);
     }
 
     @Override
@@ -129,13 +122,13 @@ public class CrashController implements Controller{
     @Override
     public void setBlocked(Button button) {
         button.setStyle("-fx-background-color: #a93b3b;");
-        blockedButtons.put(button, true);
+        button.setDisable(true);
     }
 
     @Override
     public void unblockButton(Button button) {
         button.setStyle("-fx-background-color: #864425;");
-        blockedButtons.remove(button);
+        button.setDisable(false);
     }
 
     @Override
