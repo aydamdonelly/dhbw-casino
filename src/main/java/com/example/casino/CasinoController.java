@@ -1,5 +1,6 @@
 package com.example.casino;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -84,6 +85,10 @@ public class CasinoController implements Controller {
     //Kontodaten
     public void updateKonto(float newkontostand) {
         kontostand.setText("Kontostand: €"+newkontostand);
+    }
+
+    public void updateKontoThread(float newKontostand) {
+        Platform.runLater(() -> kontostand.setText("Kontostand: €" + newKontostand));
     }
 
     //Controller-Methoden

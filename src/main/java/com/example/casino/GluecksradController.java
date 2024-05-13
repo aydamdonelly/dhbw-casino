@@ -25,7 +25,7 @@ public class GluecksradController implements Controller {
     @FXML
     private Button startRad;
     @FXML
-    private Label introText;
+    public Label introText;
 
     //Nicht verfügbare Buttons
     private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
@@ -33,18 +33,21 @@ public class GluecksradController implements Controller {
     //MVC Implementierung
     @FXML
     public void onStartRadPressed () {
-        // logik.dreheRad();
-        introText.setText("test");
+        introText.setText("Viel Glück...");
+        new Thread( () -> logik.dreheRad()).start();
     }
+
 
     //Controller-Methoden
     @Override
     public void onGameEnd(String result) {
         startRad.setStyle("-fx-background-color: #864425");
+        // introText.setText(logik.winErmitteln());
     }
 
     public void onGameEnd() {
         startRad.setStyle("-fx-background-color: #864425");
+        // introText.setText(logik.winErmitteln());
     }
 
     @Override

@@ -54,4 +54,9 @@ public class CasinoPlayer {
         kontostand = newkontostand;
         controller.updateKonto(newkontostand);
     }
+
+    public void setKontostandThread(float newkontostand){
+        kontostand = newkontostand;
+        controller.updateKontoThread(newkontostand);
+    }
 }
