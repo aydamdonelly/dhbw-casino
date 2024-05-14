@@ -28,15 +28,15 @@
                <Arc fx:id="arc8" fill="#2effcd" length="36.0" radiusX="120.0" radiusY="120.0" startAngle="288.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
                <Arc fx:id="arc9" centerY="-10.0" fill="#f2f705" layoutY="10.0" length="36.0" radiusX="120.0" radiusY="120.0" startAngle="324.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
                <Label fx:id="win0" layoutX="45.0" layoutY="-31.0" rotate="-15.9" text="+500 Cash" />
-               <Label fx:id="win2" layoutX="-34.0" layoutY="-81.0" rotate="-90.0" text="2x Free Spin" />
+               <Label fx:id="win2" layoutX="-34.0" layoutY="-81.0" rotate="-90.0" text="+800 Cash" />
                <Label fx:id="win1" layoutX="16.0" layoutY="-69.0" rotate="-50.0" text="Kompliment" />
-               <Label fx:id="win3" layoutX="-84.0" layoutY="-69.0" rotate="-125.0" text="Free Psychiater" />
+               <Label fx:id="win3" layoutX="-75.0" layoutY="-75.0" rotate="-125.0" text="Free Aris" />
                <Label fx:id="win9" layoutX="36.0" layoutY="15.0" rotate="19.4" text="Konto leer :(" />
                <Label fx:id="win8" layoutX="9.0" layoutY="49.0" rotate="50.0" text="Gratis Drinks" />
-               <Label fx:id="win7" layoutX="-29.0" layoutY="57.0" rotate="90.0" text="-200 Cash" />
+               <Label fx:id="win7" layoutX="-37.0" layoutY="62.0" rotate="90.0" text="Konto halbiert" />
                <Label fx:id="win6" layoutX="-79.0" layoutY="50.0" rotate="125.0" text="Vegas Urlaub" wrapText="true" />
                <Label fx:id="win5" layoutX="-109.0" layoutY="16.0" rotate="160.0" text="Kontostand x2" />
-               <Label fx:id="win4" layoutX="-107.0" layoutY="-32.0" rotate="200.0" text="Free XXL Taco" />
+               <Label fx:id="win4" layoutX="-107.0" layoutY="-32.0" rotate="200.0" text="JACKPOT" />
             </children>
          </Group>
          <Polygon fx:id="winPointer" fill="#010b14" points="-39.450714111328125, 211.73361206054688, 12.745635986328125, 211.73361206054688, -14.21844482421875, 282.36004638671875" stroke="BLACK" strokeType="INSIDE" translateY="-150.0" StackPane.alignment="CENTER">
@@ -47,10 +47,10 @@
       </StackPane>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#onStartRadPressed" text="FREE DAILY SPIN!" BorderPane.alignment="CENTER" />
+      <Button fx:id="startRad" mnemonicParsing="false" onAction="#onStartRadPressed" text="JEDE MINUTE EIN SPIN!" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
-      <Label fx:id="introText" text="Hol Dir JETZT deinen Täglichen FREE SPIN!" BorderPane.alignment="CENTER">
+      <Label fx:id="introText" text="Hol dir GROßARTIGE GEWINNE bei unserem GLÜCKSRAD!" BorderPane.alignment="CENTER">
          <font>
             <Font size="30.0" />
          </font></Label>

@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.casino.CasinoController">
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.CasinoController">
   <!-- Top-Bereich mit Buttons -->
   <top>
     <BorderPane>
       <!-- Einstellungsbutton oben links -->
       <left>
         <HBox alignment="CENTER">
-          <Button text="Einstellungen" minWidth="100" onAction="#loadSettings"/>
+          <Button fx:id="einstellungen_button" minWidth="100" onAction="#loadSettings" text="Einstellungen" />
         </HBox>
       </left>
 
       <!-- Spielbuttons zentriert in der Mitte -->
       <right>
         <HBox alignment="CENTER">
-          <Button text="BLACKJACK" minWidth="100" onAction="#loadBlackjackView" />
-          <Button text="ROULETTE" minWidth="100" onAction="#loadRouletteView" />
-          <Button text="SLOTS" minWidth="100" onAction="#loadSlotsView" />
-          <Button text="MÜNZE" minWidth="100" onAction="#loadMuenzeView" />
-          <Button text="CRASH" minWidth="100" onAction="#loadCrashView" />
-          <Button text="GLÜCKSRAD" minWidth="100" onAction="#loadGlücksradView" />
-          <Button text="PLINKO" minWidth="100" onAction="#loadPlinkoView" />
+          <Button fx:id="blackjack_button" minWidth="100" onAction="#loadBlackjackView" text="BLACKJACK" />
+          <Button fx:id="luckyDice_button" minWidth="100" onAction="#loadLuckyDiceView" text="LUCKY DICE" />
+          <Button fx:id="slots_button" minWidth="100" onAction="#loadSlotsView" text="SLOTS" />
+          <Button fx:id="muenze_button" minWidth="100" onAction="#loadMuenzeView" text="MÜNZE" />
+          <Button fx:id="crash_button" minWidth="100" onAction="#loadCrashView" text="CRASH" />
+          <Button fx:id="gluecksrad_button" minWidth="100" onAction="#loadGlücksradView" text="GLÜCKSRAD" />
+          <Button fx:id="plinko_button" minWidth="100" onAction="#loadPlinkoView" text="PLINKO" />
         </HBox>
       </right>
     </BorderPane>
@@ -31,7 +35,7 @@
 
   <!-- Zentraler Bereich für die Spielansichten -->
   <center>
-    <StackPane fx:id="contentArea" prefHeight="800" prefWidth="1000" minWidth="500" minHeight="400">
+    <StackPane fx:id="contentArea" minHeight="400" minWidth="500" prefHeight="800" prefWidth="1000">
       <!-- Inhalte werden dynamisch geladen -->
     </StackPane>
   </center>
@@ -39,7 +43,7 @@
   <!-- Unten: Anzeige des Kontostands -->
   <bottom>
     <HBox alignment="CENTER">
-      <Label fx:id="kontostand" text="Kontostand: €1000.00" style="-fx-font-size: 20;"/>
+      <Label fx:id="kontostand" style="-fx-font-size: 20;" text="Kontostand: €1000.00" />
       <Region HBox.hgrow="ALWAYS" />
     </HBox>
   </bottom>

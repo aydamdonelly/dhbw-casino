@@ -37,7 +37,15 @@ Button:hover {
     -fx-font-size: 30px;
 }
 
-#betAmount {
+#betAmount, #crshBetAmount {
     -fx-font-family: "Pixelify Sans";
     -fx-font-size: 20px;
+}
+
+.blackjackcard {
+    -fx-padding: 20px 8px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-font-size: 35px;
+    -fx-border-width: 4px;
 }

@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.example.casino.CasinoController"
-           prefHeight="400.0" prefWidth="600.0">
-    <Label text="BLACKJACK" style="-fx-font-size: 20;" BorderPane.alignment="CENTER"/>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.casino.BlackjackController">
+    <VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml">
+        <!-- Top Section for Dealer's Cards -->
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="Dealer:" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Label fx:id="erstekartedealer" styleClass="" text=""/>
+            <Label fx:id="zweitekartedealer" styleClass="" text=""/>
+            <Label fx:id="drittekartedealer" styleClass="" text=""/>
+            <Label fx:id="viertekartedealer" styleClass="" text=""/>
+            <Label fx:id="fünftekartedealer" styleClass="" text=""/>
+
+        </HBox>
+
+        <!-- Middle Section for Player's Cards -->
+        <VBox alignment="CENTER" spacing="10">
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="Player:" style="-fx-font-size: 18px;"  />
+                <Label fx:id="erstekartespieler" styleClass="" text=""/>
+                <Label fx:id="zweitekartespieler" styleClass="" text=""/>
+                <Label fx:id="drittekartespieler" styleClass="" text=""/>
+                <Label fx:id="viertekartespieler" styleClass="" text=""/>
+                <Label fx:id="fünftekartespieler" styleClass="" text=""/>
+            </HBox>
+            <Label fx:id="winningmessage" text="" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Bottom Section for Controls and Information -->
+        <VBox alignment="CENTER" spacing="10">
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="hitButton" text="Hit" onAction="#hit"/>
+                <Button fx:id="stayButton" text="Stand" onAction="#stand"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="Bet Amount:" />
+                <TextField fx:id="einsatzfeldblackjack" promptText="Einsatz:" />
+                <Button fx:id="dealButton" text="Deal" onAction="#startgame"/>
+            </HBox>
+        </VBox>
+    </VBox>
 </StackPane>

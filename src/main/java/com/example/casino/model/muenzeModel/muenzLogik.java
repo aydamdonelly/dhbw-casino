@@ -1,9 +1,13 @@
-package com.example.casino.model;
+package com.example.casino.model.muenzeModel;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 import com.example.casino.Controller;
 import com.example.casino.MuenzeController;
+import com.example.casino.model.CasinoPlayer;
+import com.example.casino.model.InsufficientFundsException;
+import com.example.casino.model.NegativeBetException;
 
 public class muenzLogik {
 
@@ -11,6 +15,7 @@ public class muenzLogik {
     private static float wetteinsatz = 0;
     private static CasinoPlayer player = CasinoPlayer.getPlayer();
     private MuenzeController controller;
+    private Muenze coin = new Muenze();
 
     public muenzLogik(Controller controller) {
         this.controller = (MuenzeController) controller;
@@ -21,18 +26,12 @@ public class muenzLogik {
         wetteinsatz = einsatz;
     }
 
-    public void toss() {
+    public void bet() {
         try {
             player.checkBet(wetteinsatz);
-            Random rand = new Random();
-            int side = rand.nextInt(0,2);
-            if(side==1) {
-                endGame("Heads");
-            }
-            else if(side==0) {
-                endGame("Tails");
-            }
-        } catch (InsufficientFundsException e) {
+            endGame(coin.toss());
+
+        } catch (InsufficientFundsException | FileNotFoundException | NegativeBetException e) {
             controller.betRejected(e);
             System.out.println(e.getMessage());
             wetteinsatz = 0;
@@ -40,22 +39,22 @@ public class muenzLogik {
 
     }
 
-    public void endGame(String result) {
-        if(result.equals(wette)) {
+    public void endGame(String result) throws FileNotFoundException {
+        if(result.equals(wette))
+        {
             player.setKontostand(player.getKontostand()+wetteinsatz);
             wette="";
         }
-        else if(wette!="" && !result.equals(wette)){
+        else if(wette!="" && !result.equals(wette))
+        {
             player.setKontostand(player.getKontostand()-wetteinsatz);
             wette="";
         }
-        else{
+        else
+        {
             wette="";
         }
-
-        if (controller != null) {
-            controller.onGameEnd(result);
-        }
+        controller.onGameEnd(result);
     }
 
 }

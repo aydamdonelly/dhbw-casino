@@ -1,12 +1,15 @@
 package com.example.casino;
 
 import javafx.fxml.FXML;
-import com.example.casino.model.muenzLogik;
+import com.example.casino.model.muenzeModel.muenzLogik;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 public class MuenzeController implements Controller {
@@ -25,6 +28,8 @@ public class MuenzeController implements Controller {
     private Button tailsbutton;
     @FXML
     private TextField betAmount;
+    @FXML
+    private Label outcomemuenze;
 
     //Nicht verfügbare Buttons
     private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
@@ -32,7 +37,7 @@ public class MuenzeController implements Controller {
     //MVC Implementation
     @FXML
     public void tossCoin() {
-        logik.toss();
+        logik.bet();
     }
     @FXML
     public void headsBet() {
@@ -59,22 +64,36 @@ public class MuenzeController implements Controller {
     }
 
     //restliche Spiellogik
-    public void displaySide(String side) {
+    public void displaySide(String side) throws FileNotFoundException {
+        FileInputStream kopfStream = new FileInputStream("src/main/resources/img/muenze/kopf.png");
+        FileInputStream zahlStream = new FileInputStream("src/main/resources/img/muenze/zahl.png");
+
         if(side.equals("Heads")) {
-            coinimg.setImage(new Image("kopf.png"));
+            coinimg.setImage(new Image(kopfStream));
         } else if (side.equals("Tails")) {
-            coinimg.setImage(new Image("zahl.png"));
+            coinimg.setImage(new Image(zahlStream));
         }
     }
 
     //Controller-Methoden
     @Override
-    public void onGameEnd(String result) {
+    public void onGameEnd(String result) throws FileNotFoundException {
         displaySide(result);
         tailsbutton.setStyle("-fx-background-color: #864425");
         headsbutton.setStyle("-fx-background-color: #864425");
         betAmount.setText("");
         betAmount.setPromptText("Einsatz");
+        // outcomemuenze.setText("Die geworfene Seite ist: "+result+"!");
+    }
+
+    @Override
+    public void setBlocked(Button button) {
+
+    }
+
+    @Override
+    public void unblockButton(Button button) {
+
     }
 
     public void onGameEnd() {
@@ -82,18 +101,7 @@ public class MuenzeController implements Controller {
         headsbutton.setStyle("-fx-background-color: #864425");
         betAmount.setText("");
         betAmount.setPromptText("Einsatz");
-    }
-
-    @Override
-    public void setBlocked(Button button) {
-        button.setStyle("-fx-background-color: #a93b3b;");
-        blockedButtons.put(button, true);
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-        button.setStyle("-fx-background-color: #864425;");
-        blockedButtons.remove(button);
+       // outcomemuenze.setText("Deine Wette wurde nicht verarbeitet, wette nochmal.");
     }
 
     @Override

@@ -1,12 +1,10 @@
 package com.example.casino;
 
-import com.example.casino.model.GluecksradLogik;
+import com.example.casino.model.gluecksradModel.GluecksradLogik;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
 
 import java.util.HashMap;
 
@@ -23,7 +21,7 @@ public class GluecksradController implements Controller {
 
     // buttons und andere Spielelemente
     @FXML
-    private Button startRad;
+    public Button startRad;
     @FXML
     public Label introText;
 
@@ -33,10 +31,20 @@ public class GluecksradController implements Controller {
     //MVC Implementierung
     @FXML
     public void onStartRadPressed () {
+
+        if (!logik.canSpin()){
+
+            return;
+        }
+
+
+
         introText.setText("Viel Glück...");
+
+        logik.player.controller.blockButtonsTop();
+        startRad.setDisable(true);
         new Thread( () -> logik.dreheRad()).start();
     }
-
 
     //Controller-Methoden
     @Override
