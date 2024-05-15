@@ -50,7 +50,7 @@ public class BlackjackLogik {
             dealCard(playerHand, false);
             dealCard(playerHand, false);
             dealCard(dealerHand, false);
-            dealCard(dealerHand, true); // Face-down card for the dealer
+            dealCard(dealerHand, true);
         } catch (InsufficientFundsException e) {
             controller.betRejected(e);
             controller.setActiveGame(false);

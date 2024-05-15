@@ -5,6 +5,7 @@ import com.example.casino.model.luckyDiceModel.LuckyDiceLogic;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,6 +25,9 @@ public class LuckyDiceController implements Controller {
     private ImageView dice2Image;
 
     @FXML
+    private Label luckydicemessager;
+
+    @FXML
     private TextField guessedTotalField;
 
     @FXML
@@ -31,8 +35,6 @@ public class LuckyDiceController implements Controller {
 
     @FXML
     private Button rollButton;
-
-    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
 
     public LuckyDiceController() {
         this.logic = new LuckyDiceLogic(this);
@@ -127,6 +129,12 @@ public class LuckyDiceController implements Controller {
 
     @Override
     public void onGameEnd(String result) {
+        if(!result.equals("L")){
+            result = result.replace(".",",");
+            luckydicemessager.setText("Du hast "+result+"0€ gewonnen!");
+        } else {
+            luckydicemessager.setText("Du hast nichts gewonnen! Spiel weiter!");
+        }
     }
 
     @Override
@@ -139,19 +147,5 @@ public class LuckyDiceController implements Controller {
     public void betRejected(Exception e) {
         betAmountField.setText("");
         betAmountField.setPromptText(e.getMessage());
-    }
-
-    @Override
-    public void setBlocked(Button button) {
-        button.setStyle("-fx-background-color: #a93b3b;");
-        blockedButtons.put(button, true);
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-        if (blockedButtons.get(button)) {
-            button.setStyle("-fx-background-color: #864425;");
-            blockedButtons.remove(button);
-        }
     }
 }

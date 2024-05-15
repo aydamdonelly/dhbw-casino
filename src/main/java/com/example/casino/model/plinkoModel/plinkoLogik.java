@@ -20,6 +20,8 @@ public class plinkoLogik {
     private static PlinkoController controller;
     private static LinkedList<Tree> list;
     private static float gewinn;
+    private static String multiplikator = "";
+    private static float einsatz_temp = 0;
 
     public plinkoLogik(Controller controller) {
         this.controller = (PlinkoController) controller;
@@ -34,7 +36,9 @@ public class plinkoLogik {
             Label endLabel = binaryTree.getRandomLeafNode(binaryTree.getNode());
 
             wetteinsatz= einsatz;
-             gewinn = gewinn(endLabel.getText(),einsatz);
+            gewinn = gewinn(endLabel.getText(),einsatz);
+            einsatz_temp = einsatz;
+            multiplikator = endLabel.getText().replace(",",".").replace("x","");
             //endGame(gewinn);
             list = binaryTree.getListe();
 
@@ -61,16 +65,13 @@ public class plinkoLogik {
 
          float ergebnis = (player.getKontostand() -wetteinsatz);
             ergebnis += gewinn;
-
+            controller.onGameEnd(String.valueOf(einsatz_temp*Float.parseFloat(multiplikator)));
             player.setKontostandThread(ergebnis);
-        if (controller != null) {
-            controller.onGameEnd(String.valueOf(ergebnis));
-        }
     }
     private static float gewinn(String txt, float einsatz){
         switch (txt){
             case "5x":
-                    return (einsatz*5f);
+                return (einsatz*5f);
             case "2x":
                 return (einsatz *2f);
             case "0,8x":
@@ -78,7 +79,7 @@ public class plinkoLogik {
             case "0,1x":
                 return (einsatz*0.1f);
                 default:
-                    System.out.println("es konnte kein gewinn ermittelt werden");
+                    System.out.println("Es konnte kein gewinn ermittelt werden");
                     return einsatz;
         }
     }

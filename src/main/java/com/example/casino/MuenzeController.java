@@ -29,10 +29,7 @@ public class MuenzeController implements Controller {
     @FXML
     private TextField betAmount;
     @FXML
-    private Label outcomemuenze;
-
-    //Nicht verfügbare Buttons
-    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
+    private Label coinmessager;
 
     //MVC Implementation
     @FXML
@@ -81,19 +78,10 @@ public class MuenzeController implements Controller {
         displaySide(result);
         tailsbutton.setStyle("-fx-background-color: #864425");
         headsbutton.setStyle("-fx-background-color: #864425");
+        coinmessager.setText("Das Ergebnis ist: "+result);
         betAmount.setText("");
         betAmount.setPromptText("Einsatz");
         // outcomemuenze.setText("Die geworfene Seite ist: "+result+"!");
-    }
-
-    @Override
-    public void setBlocked(Button button) {
-
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-
     }
 
     public void onGameEnd() {

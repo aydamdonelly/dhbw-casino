@@ -51,7 +51,7 @@ public class CasinoPlayer {
     public boolean checkBet(float angefragterEinsatz) throws InsufficientFundsException, NegativeBetException {
         if(angefragterEinsatz > kontostand) {
             throw new InsufficientFundsException(angefragterEinsatz-kontostand);
-        } else if (angefragterEinsatz <=0) throw new NegativeBetException();
+        } else if (angefragterEinsatz<=0) throw new NegativeBetException();
         return true;
     }
 

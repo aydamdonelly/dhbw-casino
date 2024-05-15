@@ -91,6 +91,7 @@ public class CrashLogik {
 
             // calculating the Account Balance
             player.setKontostand(calcResult(currentBet, currentMultiplier));
+            controller.onGameEnd(Float.toString((currentBet*currentMultiplier)-currentBet));
 
             // adding to the scores of the current session
             scores.add(currentMultiplier);
@@ -148,6 +149,7 @@ public class CrashLogik {
         Platform.runLater(() -> controller.crsh_factor_text.setText(shown_text));
         Platform.runLater(() -> controller.crsh_toggle_start_button.setText("Start Rocket!"));
         player.setKontostandThread(calcResult(currentBet, currentMultiplier));
+        controller.onGameEnd("Crashed");
         explodeRocket(player_img);
         controller.unblockElements();
     }

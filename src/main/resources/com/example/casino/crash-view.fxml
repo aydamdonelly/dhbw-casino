@@ -24,26 +24,26 @@
                 </center>
             </BorderPane>
         </bottom>
-      <center>
-         <BorderPane fx:id="crsh_pane" prefHeight="176.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-      </center>
-      <top>
-         <BorderPane prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <center>
-               <Label fx:id="crsh_factor_text" prefHeight="47.0" prefWidth="99.0" text="1.00x" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font size="38.0" />
-                  </font>
-               </Label>
-            </center>
-            <bottom>
-               <Label fx:id="crsh_highscore" text="Highscore: 0.00x" textFill="WHITE" BorderPane.alignment="CENTER">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-            </bottom>
-         </BorderPane>
-      </top>
+        <center>
+            <BorderPane fx:id="crsh_pane" prefHeight="176.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+        </center>
+        <top>
+            <BorderPane prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                <center>
+                    <Label fx:id="crsh_factor_text" text="1.00x" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                            <Font size="38.0" />
+                        </font>
+                    </Label>
+                </center>
+                <bottom>
+                    <Label fx:id="crsh_highscore" text="Highscore: 0.00x" textFill="WHITE" BorderPane.alignment="CENTER">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Label>
+                </bottom>
+            </BorderPane>
+        </top>
     </BorderPane>
 </StackPane>

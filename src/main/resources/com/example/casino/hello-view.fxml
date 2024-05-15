@@ -11,13 +11,6 @@
   <!-- Top-Bereich mit Buttons -->
   <top>
     <BorderPane>
-      <!-- Einstellungsbutton oben links -->
-      <left>
-        <HBox alignment="CENTER">
-          <Button fx:id="einstellungen_button" minWidth="100" onAction="#loadSettings" text="Einstellungen" />
-        </HBox>
-      </left>
-
       <!-- Spielbuttons zentriert in der Mitte -->
       <right>
         <HBox alignment="CENTER">

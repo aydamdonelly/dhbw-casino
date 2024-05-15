@@ -67,6 +67,8 @@ public class PlinkoController implements Controller{
     private Circle c_6_5;
     @FXML
     private Circle c_6_6;
+    @FXML
+    private Label plinkomessager;
 
     @FXML
     private Label mulitply2v1;
@@ -256,19 +258,8 @@ return  binaryTree;
 
     @Override
     public void onGameEnd(String result) {
-
-
-    }
-
-
-    @Override
-    public void setBlocked(Button button) {
-
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-
+        System.out.println("Game END" + result);
+        Platform.runLater(() -> plinkomessager.setText("Aus deinem Einsatz sind " + result + "0€ geworden."));
     }
 
     @Override

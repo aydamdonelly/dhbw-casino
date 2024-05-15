@@ -26,6 +26,13 @@ Button {
     -fx-cursor: hand;
 }
 
+TextField {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-font-family: "Arial Black";
+    -fx-border-radius: 5px;
+}
+
 Button:hover {
     -fx-background-color: #a25837;
 }
@@ -48,4 +55,19 @@ Button:hover {
     -fx-border-color: black;
     -fx-font-size: 35px;
     -fx-border-width: 4px;
+}
+
+.slotsbackground {
+    -fx-padding: 60px 95px;
+    -fx-background-color: white;
+    -fx-border-color: orange;
+    -fx-border-width: 10px;
+    -fx-max-width: 400px;
+    -fx-alignment: center;
+}
+
+.messager {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Arial Black';
 }

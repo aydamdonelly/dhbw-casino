@@ -3,25 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.SlotController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff5e1f" height="122.0" layoutX="147.0" layoutY="110.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" width="306.0" />
-      <Button fx:id="spinbutton" layoutX="250.0" layoutY="254.0" mnemonicParsing="false" onAction="#spinButton" text="SPIN!" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="104.0" layoutX="157.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="104.0" layoutX="353.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="104.0" layoutX="255.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-      <ImageView fx:id="symbol1ImageView" fitHeight="104.0" fitWidth="90.0" layoutX="157.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="symbol2ImageView" fitHeight="104.0" fitWidth="90.0" layoutX="255.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="symbol3ImageView" fitHeight="104.0" fitWidth="90.0" layoutX="353.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox layoutX="85.0" layoutY="320.0">
-         <Button fx:id="betMinus" onAction="#minusButton" text="↓↓↓" />
-         <TextField fx:id="betMoney" layoutX="229.0" layoutY="303.0" text="0" />
-         <Button fx:id="betPlus" onAction="#plusButton" text="↑↑↑" />
-      </HBox>
-      <Button layoutX="177.0" layoutY="387.0" mnemonicParsing="false" onAction="#showInfo" text="Info Kombinationen" />
-   </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.SlotController">
+   <center>
+      <VBox alignment="CENTER" spacing="10">
+         <Label fx:id="winningmessageslots" text="" styleClass="messager"/>
+         <HBox alignment="CENTER" spacing="10" styleClass="slotsbackground">
+            <ImageView fx:id="symbol1ImageView" fitHeight="104.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="symbol2ImageView" fitHeight="104.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="symbol3ImageView" fitHeight="104.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+         </HBox>
+         <Button fx:id="spinbutton" onAction="#spinButton" text="SPIN!" />
+         <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="betMinus" onAction="#minusButton" text="↓↓↓" />
+            <TextField fx:id="betMoney" text="0" />
+            <Button fx:id="betPlus" onAction="#plusButton" text="↑↑↑" />
+         </HBox>
+      </VBox>
+   </center>
+   <bottom>
+      <Button alignment="CENTER" onAction="#showInfo" text="Info Kombinationen" />
+   </bottom>
+</BorderPane>

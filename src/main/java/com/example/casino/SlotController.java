@@ -5,6 +5,7 @@ import com.example.casino.model.slotsModel.SlotsLogik;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +23,7 @@ public class SlotController implements Controller {
     @FXML
     private TextField betMoney;
     @FXML
-    private TextField dynamicTextField;
+    private Label winningmessageslots;
 
     @FXML
     private ImageView symbol1ImageView;
@@ -48,10 +49,10 @@ public class SlotController implements Controller {
     public void spinButton() {
         try {
             //implement the animation
-            logic.spin(Float.parseFloat(betMoney.getText()));
+            logic.spin(convertInput(betMoney.getText()));
 
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            winningmessageslots.setText("Gebe einen gültigen Betrag ein!");
         }
     }
 
@@ -83,7 +84,7 @@ public class SlotController implements Controller {
 
     @Override
     public void onGameEnd(String result) {
-
+        winningmessageslots.setText(result);
     }
 
     public void initialize() throws FileNotFoundException {
@@ -113,23 +114,14 @@ public class SlotController implements Controller {
     }
 
     @Override
-    public void setBlocked(Button button) {
-
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-
-    }
-
-    @Override
-    public float convertInput(String inputtext) throws NumberFormatException {
-        return 0;
+    public float convertInput(String inputtext) throws NumberFormatException{
+        inputtext = inputtext.replace(",",".");
+        return Float.parseFloat(inputtext);
     }
 
     @Override
     public void betRejected(Exception e) {
-
+        winningmessageslots.setText(e.getMessage());
     }
 }
 

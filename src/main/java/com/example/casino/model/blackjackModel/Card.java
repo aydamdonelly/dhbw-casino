@@ -30,9 +30,9 @@ public class Card {
 
     public int getValue() {
         if (rank == Rank.ACE) {
-            return 11; // Aces start as 11
+            return 11;
         } else {
-            return rank.getValue(); // Other cards are worth their defined values
+            return rank.getValue();
         }
     }
 

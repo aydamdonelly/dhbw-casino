@@ -3,59 +3,59 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.PlinkoController">
+<StackPane fx:id="roulette" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.PlinkoController">
     <children>
-        <Pane fx:id="p" prefHeight="200.0" prefWidth="200.0">
-            <children>
-                <Circle fx:id="c_2_1" fill="DODGERBLUE" layoutX="250.0" layoutY="50.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_3_1" fill="DODGERBLUE" layoutX="200.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_2_2" fill="DODGERBLUE" layoutX="350.0" layoutY="50.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_3_2" fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_3_3" fill="DODGERBLUE" layoutX="400.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_4_1" fill="DODGERBLUE" layoutX="150.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_5_1" fill="DODGERBLUE" layoutX="100.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_4_2" fill="DODGERBLUE" layoutX="250.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_5_2" fill="DODGERBLUE" layoutX="200.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_5_3" fill="DODGERBLUE" layoutX="300.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_4_3" fill="DODGERBLUE" layoutX="350.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_5_4" fill="DODGERBLUE" layoutX="400.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_4_4" fill="DODGERBLUE" layoutX="450.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_5_5" fill="DODGERBLUE" layoutX="500.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_1" fill="DODGERBLUE" layoutX="50.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_2" fill="DODGERBLUE" layoutX="150.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_3" fill="DODGERBLUE" layoutX="250.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_4" fill="DODGERBLUE" layoutX="350.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_5" fill="DODGERBLUE" layoutX="450.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="c_6_6" fill="DODGERBLUE" layoutX="550.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Button fx:id="spawnBall" layoutX="411.0" layoutY="350.0" mnemonicParsing="false" onAction="#onSpawnBall" text="Spawn Ball" />
-                <Label fx:id="mulitply2v1" layoutX="73.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="2x" />
-                <Label fx:id="mulitply08v1" layoutX="173.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,8x" />
-                <Label fx:id="mulitply01" layoutX="273.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,1x" />
-                <Label fx:id="mulitply08v2" layoutX="373.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,8x" />
-                <Label fx:id="mulitply2v2" layoutX="473.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="2x" />
-                <TextField fx:id="betAmount" layoutX="40.0" layoutY="350.0" promptText="Einsatz eingeben" />
-                <Circle fx:id="c_1_1" fill="DODGERBLUE" layoutX="300.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                <Label fx:id="mulitply0v1" layoutX="3.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="5x" />
-                <Label fx:id="mulitply0v2" layoutX="548.0" layoutY="288.0" prefHeight="40.0" prefWidth="55.0" text="5x" />
-            </children>
-            <Label fx:id="messageboard" text=""/>
-        </Pane>
+        <BorderPane>
+            <center>
+                <VBox alignment="CENTER" spacing="10">
+                    <HBox alignment="CENTER">
+                    <Pane fx:id="p" prefHeight="300.0" prefWidth="600.0">
+                        <children>
+                            <Circle fx:id="c_2_1" fill="DODGERBLUE" layoutX="250.0" layoutY="50.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_3_1" fill="DODGERBLUE" layoutX="200.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_2_2" fill="DODGERBLUE" layoutX="350.0" layoutY="50.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_3_2" fill="DODGERBLUE" layoutX="300.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_3_3" fill="DODGERBLUE" layoutX="400.0" layoutY="100.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_4_1" fill="DODGERBLUE" layoutX="150.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_5_1" fill="DODGERBLUE" layoutX="100.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_4_2" fill="DODGERBLUE" layoutX="250.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_5_2" fill="DODGERBLUE" layoutX="200.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_5_3" fill="DODGERBLUE" layoutX="300.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_4_3" fill="DODGERBLUE" layoutX="350.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_5_4" fill="DODGERBLUE" layoutX="400.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_4_4" fill="DODGERBLUE" layoutX="450.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_5_5" fill="DODGERBLUE" layoutX="500.0" layoutY="200.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_1" fill="DODGERBLUE" layoutX="50.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_2" fill="DODGERBLUE" layoutX="150.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_3" fill="DODGERBLUE" layoutX="250.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_4" fill="DODGERBLUE" layoutX="350.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_5" fill="DODGERBLUE" layoutX="450.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_6_6" fill="DODGERBLUE" layoutX="550.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="c_1_1" fill="DODGERBLUE" layoutX="300.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Label fx:id="mulitply0v1" layoutX="3.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="5x" />
+                            <Label fx:id="mulitply2v1" layoutX="73.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="2x" />
+                            <Label fx:id="mulitply08v1" layoutX="173.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,8x" />
+                            <Label fx:id="mulitply01" layoutX="273.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,1x" />
+                            <Label fx:id="mulitply08v2" layoutX="373.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="0,8x" />
+                            <Label fx:id="mulitply2v2" layoutX="473.0" layoutY="287.0" prefHeight="40.0" prefWidth="55.0" text="2x" />
+                            <Label fx:id="mulitply0v2" layoutX="548.0" layoutY="288.0" prefHeight="40.0" prefWidth="55.0" text="5x" />
+                        </children>
+                    </Pane>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10">
+                        <TextField fx:id="betAmount" promptText="Einsatz eingeben" />
+                        <Button fx:id="spawnBall" mnemonicParsing="false" onAction="#onSpawnBall" text="Spawn Ball" />
+                    </HBox>
+                    <Label text="" fx:id="plinkomessager" styleClass="messager"/>
+                </VBox>
+            </center>
+        </BorderPane>
     </children>
 </StackPane>
-
-
-
-
-
-
-
-
-
-
-
-
-

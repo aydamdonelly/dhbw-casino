@@ -8,22 +8,19 @@ import com.example.casino.model.NegativeBetException;
 
 public class LuckyDiceLogic {
 
-    private static int guessedTotal = 7; // Standardannahme für die Summe von zwei Würfeln
+    private static int guessedTotal = 7;
     private static float betAmount = 0;
     private static CasinoPlayer player = CasinoPlayer.getPlayer();
-    private Controller.LuckyDiceController controller;
-    private PayoutCalculator payoutCalculator = new PayoutCalculator(); // Verwendung der PayoutCalculator Klasse
+    private LuckyDiceController controller;
+    private PayoutCalculator payoutCalculator = new PayoutCalculator();
 
-    private Dice dice1 = new Dice(); // Erzeugen eines Objektes der Würfelklasse
+    private Dice dice1 = new Dice();
     private Dice dice2 = new Dice();
     private int dice1Value;
     private int dice2Value;
 
-    public LuckyDiceLogic(Controller.LuckyDiceController controller) {
-        this.controller = controller;
-    }
-
-    public LuckyDiceLogic(LuckyDiceController luckyDiceController) {
+    public LuckyDiceLogic(Controller controller) {
+        this.controller = (LuckyDiceController) controller;
     }
 
     public static void setBet(int total, float amount) {
@@ -54,11 +51,11 @@ public class LuckyDiceLogic {
     public void endGame(String result, float factor) {
         if ("Win".equals(result)) {
             player.setKontostand(player.getKontostand() + betAmount * factor);
+            float gewinn = betAmount*factor-betAmount;
+            controller.onGameEnd(Float.toString(gewinn));
         } else {
             player.setKontostand(player.getKontostand() - betAmount);
-        }
-        if (controller != null) {
-            controller.onGameEnd(result);
+            controller.onGameEnd("L");
         }
     }
 }

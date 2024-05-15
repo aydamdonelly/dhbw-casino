@@ -13,7 +13,7 @@ public enum Rank {
     JACK("J", 10),
     QUEEN("Q", 10),
     KING("K", 10),
-    ACE("A", 11);  // Note: ACE value needs special handling in game logic
+    ACE("A", 11);
 
     private final String rankSymbol;
     private final int value;

@@ -50,8 +50,8 @@
                        </tooltip>
                    </TextField>
                   <Button mnemonicParsing="false" onAction="#showInfo" prefHeight="71.0" prefWidth="300.0" text="Wett-Info" />
-
-                     </children>
+               </children>
+                <Label fx:id="luckydicemessager" styleClass="messager" text=""/>
             </VBox>
          </children>
       </GridPane>

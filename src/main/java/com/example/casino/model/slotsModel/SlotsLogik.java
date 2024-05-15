@@ -38,10 +38,15 @@ public class SlotsLogik {
 
             if (random1 == 1 && random2 == 1 && random3 == 1) {
                 player.setKontostand(player.getKontostand()+wetteinsatz*2);
+                controller.onGameEnd("Drei mal die Sieben! Du hast "+wetteinsatz*2+"€ gewonnen!");
             } else if (random1 == random2 && random2 == random3) { // 3 equal
                 player.setKontostand((float) (player.getKontostand()+wetteinsatz*1.6));
+                controller.onGameEnd("Drei identische Symbole! Du hast "+wetteinsatz*1.6+"€ gewonnen!");
             } else if (random1 == random2 || random2 == random3 || random1 == random3) { // 2 equal
                 player.setKontostand((float) (player.getKontostand()+wetteinsatz*1.1));
+                controller.onGameEnd("Zwei identische Symbole! Du hast "+wetteinsatz*1.1+"€ gewonnen!");
+            } else {
+                controller.onGameEnd("Du hast diesmal nichts gewonnen! Niemals aufgeben spiele so viel wie du kannst!!!!!");
             }
         } catch (InsufficientFundsException e) {
             controller.betRejected(e);

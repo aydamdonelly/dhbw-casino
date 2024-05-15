@@ -6,8 +6,10 @@
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino.MuenzeController">
     <BorderPane minHeight="400" minWidth="500" prefHeight="800" prefWidth="1000">
         <center>
-            <ImageView fx:id="coinimg" fitHeight="300" fitWidth="300" preserveRatio="true" />
-            <!-- <Label fx:id="outcomemuenze" text="" /> -->
+            <VBox alignment="CENTER" spacing="10">
+                <ImageView fx:id="coinimg" fitHeight="300" fitWidth="300" preserveRatio="true" />
+                <Label fx:id="coinmessager" text="" styleClass="messager"/>
+            </VBox>
         </center>
         <bottom>
             <BorderPane>

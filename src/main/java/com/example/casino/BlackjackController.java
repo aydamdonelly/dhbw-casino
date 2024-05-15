@@ -157,16 +157,6 @@ public class BlackjackController implements Controller{
         pregameButtons();
     }
 
-    @Override
-    public void setBlocked(Button button) {
-
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-
-    }
-
     public void clearboard() {
         winningmessage.setText("");
 

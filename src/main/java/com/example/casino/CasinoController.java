@@ -27,13 +27,7 @@ public class CasinoController implements Controller {
     //Anbindung Controller->Model
     private static CasinoPlayer player;
 
-    //Nicht verfügbare Buttons
-    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
-
-
     // import buttons from top
-    @FXML
-    Button einstellungen_button;
     @FXML
     Button luckyDice_button;
 
@@ -76,21 +70,21 @@ public class CasinoController implements Controller {
     public void loadBlackjackView() throws IOException {
         Node view = loadFXML("blackjack-view.fxml");
         contentArea.getChildren().setAll(view);
-        rootStandardStyle();
+        root.setStyle("-fx-background-color: linear-gradient(to bottom,  #36772c 3.6%, #68b22a 87.6%);");
     }
 
     @FXML
     public void loadLuckyDiceView() throws IOException {
         Node view = loadFXML("luckyDice-view.fxml");
         contentArea.getChildren().setAll(view);
-        rootStandardStyle();
+        root.setStyle("-fx-background-color: linear-gradient(to bottom,  #7a4423 3.6%, #a64f20 87.6%);");
     }
 
     @FXML
     public void loadSlotsView() throws IOException {
         Node view = loadFXML("slots-view.fxml");
         contentArea.getChildren().setAll(view);
-        rootStandardStyle();
+        root.setStyle("-fx-background-color: linear-gradient(to bottom,  #9f2929 3.6%, #c91414 87.6%);");
     }
     @FXML
     public void loadCrashView() throws IOException {
@@ -102,23 +96,17 @@ public class CasinoController implements Controller {
     public void loadPlinkoView() throws IOException {
         Node view = loadFXML("plinko-view.fxml");
         contentArea.getChildren().setAll(view);
-        rootStandardStyle();
+        root.setStyle("-fx-background-color: linear-gradient(to bottom,  #2b8a79 3.6%, #2bb284 87.6%);");
     }
     @FXML
     public void loadGlücksradView() throws IOException {
         Node view = loadFXML("glücksrad-view.fxml");
         contentArea.getChildren().setAll(view);
-        rootStandardStyle();
+        root.setStyle("-fx-background-color: linear-gradient(to bottom,  #917e34 3.6%, #bbb81c 87.6%);");
     }
     @FXML
     public void loadMuenzeView() throws IOException {
         Node view = loadFXML("muenze-view.fxml");
-        contentArea.getChildren().setAll(view);
-        rootStandardStyle();
-    }
-    @FXML
-    public void loadSettings() throws IOException {
-        Node view = loadFXML("settings-view.fxml");
         contentArea.getChildren().setAll(view);
         rootStandardStyle();
     }
@@ -129,7 +117,6 @@ public class CasinoController implements Controller {
     }
 
     public void blockButtonsTop(){
-        einstellungen_button.setDisable(true);
         blackjack_button.setDisable(true);
         luckyDice_button.setDisable(true);
         slots_button.setDisable(true);
@@ -140,7 +127,6 @@ public class CasinoController implements Controller {
     }
 
     public void unblockButtonsTop(){
-        einstellungen_button.setDisable(false);
         blackjack_button.setDisable(false);
         luckyDice_button.setDisable(false);
         slots_button.setDisable(false);
@@ -163,18 +149,6 @@ public class CasinoController implements Controller {
     //Controller-Methoden
     @Override
     public void onGameEnd(String result) {}
-
-    @Override
-    public void setBlocked(Button button) {
-        button.setStyle("-fx-background-color: #a93b3b;");
-        blockedButtons.put(button, true);
-    }
-
-    @Override
-    public void unblockButton(Button button) {
-        button.setStyle("-fx-background-color: #864425;");
-        blockedButtons.remove(button);
-    }
 
     @Override
     public void betRejected(Exception e) {}

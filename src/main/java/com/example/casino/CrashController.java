@@ -29,8 +29,8 @@ public class CrashController implements Controller{
     @FXML
     public Label crsh_highscore;
 
-    //Nicht verfügbare Buttons
-    private HashMap<Button, Boolean> blockedButtons = new HashMap<>();
+    @FXML
+    private Label crashmessager;
 
     //Anbindung Controller->Model
     private CrashLogik logik = new CrashLogik(this);
@@ -96,7 +96,6 @@ public class CrashController implements Controller{
 
     public void unblockElements(){
         // blocking the buttons
-        unblockButton(player.controller.einstellungen_button);
         unblockButton(player.controller.blackjack_button);
         unblockButton(player.controller.luckyDice_button);
         unblockButton(player.controller.slots_button);
@@ -109,7 +108,6 @@ public class CrashController implements Controller{
 
     public void blockElements(){
         // blocking the buttons
-        setBlocked(player.controller.einstellungen_button);
         setBlocked(player.controller.blackjack_button);
         setBlocked(player.controller.luckyDice_button);
         setBlocked(player.controller.slots_button);
@@ -122,16 +120,19 @@ public class CrashController implements Controller{
 
     @Override
     public void onGameEnd(String result) {
-
+        result = result.replace(".", ",");
+        if(!result.equals("Crashed")) {
+            crsh_factor_text.setText("Du hast "+result+"0€ gewonnen! Spiel weiter!");
+        } else {
+            crsh_factor_text.setText("Die Rakete ist abgestürzt, probiers nochmal!");
+        }
     }
 
-    @Override
     public void setBlocked(Button button) {
         button.setStyle("-fx-background-color: #a93b3b;");
         button.setDisable(true);
     }
 
-    @Override
     public void unblockButton(Button button) {
         button.setStyle("-fx-background-color: #864425;");
         button.setDisable(false);
