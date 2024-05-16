@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 public interface Controller {
     HashMap<Button, Boolean> blockedButtons = new HashMap<>();
+
+
     void onGameEnd(String result);
     void setBlocked(Button button);
     void unblockButton(Button button);
